@@ -1,0 +1,22 @@
+{
+  "name": "lab1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/muhannad-ibrahim/toDoNodeJS.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/muhannad-ibrahim/toDoNodeJS/issues"
+  },
+  "homepage": "https://github.com/muhannad-ibrahim/toDoNodeJS#readme",
+  "dependencies": {
+    "commander": "^10.0.0"
+  }
+}

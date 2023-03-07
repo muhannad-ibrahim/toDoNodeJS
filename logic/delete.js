@@ -1,27 +1,25 @@
-const requireJson = require('./readFile')
+const requireJson = require("./readFile");
+const fs = require("fs");
 
-exports.deleteTask = function (arg){
-    let flag = 0;
-    let countTasks = 0;
+exports.deleteTask = function (arg) {
   if (arg.length === 1) {
-    try {
-      const fs = require("fs");
-      const todos = requireJson();
-      todos.forEach((doc) => {
-        if (doc["id"] === parseInt(arg[0])) {
-           todos.splice(countTasks,1);
-          flag = 1;
+    const todos = requireJson();
+    if (!todos) {
+      console.log("cannot read from file");
+    } else {
+      let newTodos = [];
+      todos.filter((doc) => {
+        if (doc["id"] != parseInt(arg[0])) {
+          newTodos.push(doc);
         }
-        countTasks++;
       });
-      if (flag) {
-        fs.writeFileSync("./todos.json", JSON.stringify(todos));
+
+      if (newTodos.length > 0 && newTodos.length !== todos.length) {
+        fs.writeFileSync("./todos.json", JSON.stringify(newTodos));
         console.log("deleted successfully");
       } else {
         console.log("can't delete");
       }
-    } catch (error) {
-      console.error("Error during read or write into file");
     }
   }
-}
+};
